@@ -37,7 +37,7 @@ let radiologia = [
 ];
 let traumatologia = [
   {
-    hora: "8:00",
+    hora: "08:00",
     especialista: "MARIA PAZ ALTUZARRA",
     paciente: "PAULA SANCHEZ",
     rut: "15554774-5",
@@ -88,7 +88,7 @@ let traumatologia = [
 ];
 let dental = [
   {
-    hora: "8:30",
+    hora: "08:30",
     especialista: "ANDREA ZUNIGA",
     paciente: "MARCELA RETAMAL",
     rut: "11123425-6",
@@ -173,29 +173,6 @@ tablePatientInformationGenerator(traumatologia, "traumatology");
 tablePatientInformationGenerator(dental, "dental");
 
 // Desafio Numero 2 - Uso de Metodos con Arrays y Objetos
-// Bonus: Function Sort
-// traumatologia[0].hora
-// '8:00'
-// traumatologia[0].hora.split(":")
-// (2) ['8', '00']
-// Array[indice].elemento.metodo("condicion")
-// traumatologia[0].hora.split(":")[0]
-// '8'
-function sortTime(array) {
-  for (let i = 0; i < array.length; i++) {
-    let hour = array[i].hora.split(":")[0];
-    console.log(`${i} ${hour}`);
-  }
-}
-//   array.sort(function (a, b) {
-//     let timeSplit = array.hora.split(":");
-//     console.log(timeSplit[0]);
-//     return timeSplit;
-// return a.hora.localeCompare() - b.hora.localeCompare();
-//   });
-//   tablePatientInformationGenerator(traumatologia, "traumatology");
-// }
-sortTime(traumatologia);
 // 1. Agregar 5 horas de diferentes pacientes a traumatologia.
 // Created function to add a new patient to any of the array of objects lists.
 function addPatient(array, time, specialist, patient, rut, prevision) {
@@ -249,6 +226,23 @@ addPatient(
   "FONASA"
 );
 tablePatientInformationGenerator(traumatologia, "traumatology");
+
+// Bonus: Function Sort
+
+function timeSortTable(array) {
+  array.sort(function (a, b) {
+    if (a.hora > b.hora) {
+      return 1;
+    }
+    if (a.hora < b.hora) {
+      return -1;
+    }
+    return 0;
+  });
+}
+timeSortTable(traumatologia);
+tablePatientInformationGenerator(traumatologia, "traumatology");
+patientAttendanceInformation(traumatologia, "traumatology");
 
 // 2. Eliminar el primer y ultimo elemento del arreglo de Radiologia.
 // Created function to remove first and last patient from any of the array of objects lists.
