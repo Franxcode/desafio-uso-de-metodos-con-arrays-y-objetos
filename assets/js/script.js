@@ -282,7 +282,7 @@ let isaprePatientsFilter = dental.filter(function (paciente) {
 function isaprePatients(pacientes, htmlTarget) {
   let genericEmptyString = "";
   for (let i = 0; i < pacientes.length; i++) {
-    genericEmptyString += `${pacientes[i].paciente}</br>`;
+    genericEmptyString += `${pacientes[i].paciente} - ${pacientes[i].prevision}</br>`;
   }
   document.getElementById(
     `patient_attendance_list_isapre_${htmlTarget}`
