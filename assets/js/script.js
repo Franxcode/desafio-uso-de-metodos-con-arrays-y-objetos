@@ -173,6 +173,7 @@ tablePatientInformationGenerator(traumatologia, "traumatology");
 tablePatientInformationGenerator(dental, "dental");
 
 // Desafio Numero 2 - Uso de Metodos con Arrays y Objetos
+
 // 1. Agregar 5 horas de diferentes pacientes a traumatologia.
 // Created function to add a new patient to any of the array of objects lists.
 function addPatient(array, time, specialist, patient, rut, prevision) {
@@ -184,7 +185,7 @@ function addPatient(array, time, specialist, patient, rut, prevision) {
     prevision: `${prevision}`,
   });
 }
-
+// Including 5 new hours.
 addPatient(
   traumatologia,
   "09:00",
@@ -227,7 +228,7 @@ addPatient(
 );
 tablePatientInformationGenerator(traumatologia, "traumatology");
 
-// Bonus: Function Sort
+// 1.5 Bonus: Function Sort the table by hour and patient name, ascending order. - I created this in order for the first and last attendance values on this table to reflect accurate information.
 
 function timeSortTable(array) {
   array.sort(function (a, b) {
@@ -237,9 +238,16 @@ function timeSortTable(array) {
     if (a.hora < b.hora) {
       return -1;
     }
+    if (a.paciente > b.paciente) {
+      return 1;
+    }
+    if (a.paciente < b.paciente) {
+      return -1;
+    }
     return 0;
   });
 }
+// Calling the functions.
 timeSortTable(traumatologia);
 tablePatientInformationGenerator(traumatologia, "traumatology");
 patientAttendanceInformation(traumatologia, "traumatology");
@@ -250,7 +258,7 @@ function removeFirstAndLastPatient(array) {
   array.shift();
   array.pop();
 }
-
+// Calling the functions.
 removeFirstAndLastPatient(radiologia);
 tablePatientInformationGenerator(radiologia, "radiology");
 patientAttendanceInformation(radiologia, "radiology");
@@ -274,6 +282,7 @@ function separator(array, htmlTarget, separator) {
     `patient_attendance_information_${htmlTarget}_separator`
   ).innerHTML = patientsResult;
 }
+// Calling the function.
 separator(dental, "dental", "-");
 
 // 4. Imprimir un listado total de todos los pacientes que se atendieron en el centro medico.
@@ -288,6 +297,7 @@ function fullAttendancePatientList(pacientes) {
   document.getElementById("patient_attendance_list_full").innerHTML =
     genericEmptyString;
 }
+// Calling the function.
 fullAttendancePatientList(fullAttendanceList);
 
 // 5. Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médicas Dental.
@@ -305,10 +315,12 @@ function isaprePatients(pacientes, htmlTarget) {
     `patient_attendance_list_isapre_${htmlTarget}`
   ).innerHTML = genericEmptyString;
 }
+// Calling the function.
 isaprePatients(isaprePatientsFilter, "dental");
 
 // 6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas médicas de Traumatología.
 let fonasaPatientsFilter = traumatologia.filter(function (paciente) {
   return paciente.prevision == "FONASA";
 });
+// Calling the function.
 isaprePatients(fonasaPatientsFilter, "traumatology");
