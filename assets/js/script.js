@@ -173,7 +173,29 @@ tablePatientInformationGenerator(traumatologia, "traumatology");
 tablePatientInformationGenerator(dental, "dental");
 
 // Desafio Numero 2 - Uso de Metodos con Arrays y Objetos
-
+// Bonus: Function Sort
+// traumatologia[0].hora
+// '8:00'
+// traumatologia[0].hora.split(":")
+// (2) ['8', '00']
+// Array[indice].elemento.metodo("condicion")
+// traumatologia[0].hora.split(":")[0]
+// '8'
+function sortTime(array) {
+  for (let i = 0; i < array.length; i++) {
+    let hour = array[i].hora.split(":")[0];
+    console.log(`${i} ${hour}`);
+  }
+}
+//   array.sort(function (a, b) {
+//     let timeSplit = array.hora.split(":");
+//     console.log(timeSplit[0]);
+//     return timeSplit;
+// return a.hora.localeCompare() - b.hora.localeCompare();
+//   });
+//   tablePatientInformationGenerator(traumatologia, "traumatology");
+// }
+sortTime(traumatologia);
 // 1. Agregar 5 horas de diferentes pacientes a traumatologia.
 // Created function to add a new patient to any of the array of objects lists.
 function addPatient(array, time, specialist, patient, rut, prevision) {
@@ -237,6 +259,7 @@ function removeFirstAndLastPatient(array) {
 
 removeFirstAndLastPatient(radiologia);
 tablePatientInformationGenerator(radiologia, "radiology");
+patientAttendanceInformation(radiologia, "radiology");
 
 // 3. Imprimir dental pero separados por guion cada dato y cada fila de informacion debe estar separada por un parrafo.
 // Pense inicialmente hacerlo usando el metodo join(" - ") pero no pude, es posible? - pregunta para clase de manana.
